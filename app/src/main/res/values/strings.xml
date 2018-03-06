@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Krirk Shopping Mall</string>
+    <string name="user">User :</string>
+    <string name="password">Password :</string>
+    <string name="register">New Register</string>
 </resources>
