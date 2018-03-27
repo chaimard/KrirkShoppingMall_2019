@@ -98,7 +98,8 @@ public class RegisterFragment extends Fragment {
 //            Choose Mode OK
 
 
-        }
+
+        }   // if
 
 
     }   // uploadToServer
