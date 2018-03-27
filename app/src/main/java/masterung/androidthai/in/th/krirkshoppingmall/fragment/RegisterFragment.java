@@ -12,10 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import masterung.androidthai.in.th.krirkshoppingmall.MainActivity;
 import masterung.androidthai.in.th.krirkshoppingmall.R;
+import masterung.androidthai.in.th.krirkshoppingmall.utility.AddNewUserToServer;
 import masterung.androidthai.in.th.krirkshoppingmall.utility.MyAlert;
+import masterung.androidthai.in.th.krirkshoppingmall.utility.MyConstant;
 
 /**
  * Created by masterung on 6/3/2018 AD.
@@ -97,7 +100,24 @@ public class RegisterFragment extends Fragment {
         } else {
 //            Choose Mode OK
 
+            try {
 
+                MyConstant myConstant = new MyConstant();
+                AddNewUserToServer addNewUserToServer = new AddNewUserToServer(getActivity());
+                addNewUserToServer.execute(nameString, userString,
+                        passwordString, modeString, myConstant.getUrlAddUserString());
+
+                String result = addNewUserToServer.get();
+                if (Boolean.parseBoolean(result)) {
+                    getActivity().getSupportFragmentManager().popBackStack();
+                } else {
+                    Toast.makeText(getActivity(), "Press Try Again Cannot Add User",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }   // if
 
